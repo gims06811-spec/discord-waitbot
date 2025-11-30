@@ -134,10 +134,7 @@ class waitView(discord.ui.View):
         await member.edit(nick=new_nick, reason="대기 활성화")
 
         await self.ephemeral_delete(interaction, "✅ 대기 모드 활성화!")
-        await interaction.channel.send(
-            f"{member.mention} `대기_` 붙였습니다.",
-            delete_after=AUTO_DELETE_SECONDS
-        )
+        
 
 
     # ===== 비활성화 =====
@@ -166,10 +163,7 @@ class waitView(discord.ui.View):
         await member.edit(nick=clean, reason="대기 비활성화")
 
         await self.ephemeral_delete(interaction, "✅ 대기 모드 해제됨.")
-        await interaction.channel.send(
-            f"{member.mention} `대기_` 뗐습니다.",
-            delete_after=AUTO_DELETE_SECONDS
-        )
+        
 
 
     # ===== 에페메랄(본인만 보이는 메시지도 자동 삭제) =====
@@ -228,5 +222,6 @@ async def set_panel_channel(interaction: discord.Interaction, channel: discord.T
 # ===== 실행 =====
 if not TOKEN:
     raise RuntimeError("DISCORD_TOKEN이 비어있어요 (.env 또는 Railway Variables 확인)")
+
 
 bot.run(TOKEN)
